@@ -1,17 +1,27 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+A sleek and responsive task management application built to help users organize their daily activities with ease. This project was developed to practice DOM manipulation, event handling, and local storage — fundamental skills in front-end development.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+This application allows users to:
+	•	Add new tasks
+	•	Mark tasks as complete
+	•	Delete individual tasks
+	•	Persist tasks across browser sessions using localStorage
+	•	Get a clear visual indication of completed vs. pending items
+
+Designed to be intuitive and user-friendly, the interface makes managing to-dos quick and efficient.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
-
+	•	HTML5 – Semantic structure and layout
+	•	CSS3 – Custom styling with responsive design principles
+	•	JavaScript (Vanilla JS) – For dynamic behavior and DOM interaction
+	•	LocalStorage – To persist user tasks without a backend
+ 
 ## Deployment
 
-This project is deployed on GitHub Pages:
+The app is live and accessible via GitHub Pages:
 
 - [(https://itsdavidmatthew.github.io/se_project_todo-app/)]
