@@ -9,9 +9,7 @@ class FormValidator {
     this._formElement = formElement;
   }
 
-  // TODO - finish implementing all other methods
-
-  _showInputError(formElement, inputElement, errorMessage, settings) {
+  _showInputError(formElement, inputElement, errorMessage) {
     const errorElementId = `#${inputElement.id}-error`;
     const errorElement = formElement.querySelector(errorElementId);
     inputElement.classList.add(this._inputErrorClass);
@@ -19,7 +17,7 @@ class FormValidator {
     errorElement.classList.add(this._errorClass);
   }
 
-  _hideInputError(formElement, inputElement, settings) {
+  _hideInputError(formElement, inputElement) {
     const errorElementId = `#${inputElement.id}-error`;
     const errorElement = formElement.querySelector(errorElementId);
     inputElement.classList.remove(this._inputErrorClass);
@@ -80,7 +78,13 @@ class FormValidator {
     });
     this._setEventListeners();
   }
+
+  resetValidation() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(this._formElement, inputElement);
+      inputElement.value = "";
+    });
+  }
 }
 
 export default FormValidator;
-//export

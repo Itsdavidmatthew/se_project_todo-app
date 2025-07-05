@@ -5,36 +5,29 @@ class Todo {
   }
 
   _setEventListeners() {
-    this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
-
+    // this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     this._todoDeleteBtn.addEventListener("click", () => {
-      console.log("delete button clicked");
       this._todoElement.remove();
     });
 
-    //Setup the delete button handler
-    // Set the 'change' event listener for the checkbox Element
     this._todoCheckboxEl.addEventListener("change", () => {
-      //   console.log("clicked"); //when clicked, change completes status from true to flase
       this._data.completed = !this._data.completed;
-      console.log(this._data.completed);
     });
   }
   _generateCheckboxEl() {
-    this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
-    this._todoLabel = this._todoElement.querySelector(".todo__label");
+    // this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
+    // this._todoLabel = this._todoElement.querySelector(".todo__label");
     this._todoCheckboxEl.id = `todo-${this._data.id}`;
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
     this._todoCheckboxEl.checked = this._data.completed;
   }
 
-  //   Implement Dates
   _dueDate() {
-    const todoDate = this._todoElement.querySelector(".todo__date");
+    // const todoDate = this._todoElement.querySelector(".todo__date");
     const dueDate = new Date(this._data.date);
 
     if (!isNaN(dueDate)) {
-      todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
+      this._todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
         year: "numeric",
         month: "short",
         day: "numeric",
@@ -47,6 +40,11 @@ class Todo {
       .querySelector(".todo")
       .cloneNode(true);
     const todoNameEl = this._todoElement.querySelector(".todo__name");
+
+    this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+    this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
+    this._todoLabel = this._todoElement.querySelector(".todo__label");
+    this._todoDate = this._todoElement.querySelector(".todo__date");
 
     todoNameEl.textContent = this._data.name;
 
