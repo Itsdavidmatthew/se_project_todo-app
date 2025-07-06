@@ -5,7 +5,8 @@ import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopup.querySelector(".popup__form");
+// const addTodoForm = addTodoPopup.querySelector(".popup__form");
+const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
@@ -32,7 +33,12 @@ addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
 });
 
-addTodoForm.addEventListener("submit", (evt) => {
+const renderTodo = (item) => {
+  const todo = generateTodo(item);
+  todosList.append(todo);
+};
+
+const handleAddTodoFormSubmit = (evt) => {
   evt.preventDefault();
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
@@ -43,16 +49,38 @@ addTodoForm.addEventListener("submit", (evt) => {
   const id = uuidv4();
 
   const values = { name, date, id, completed: false };
-  const todo = generateTodo(values);
-  todosList.append(todo);
+  // const todo = generateTodo(values);
+  // todosList.append(todo);
+  renderTodo(values);
 
   closeModal(addTodoPopup);
   formValidator.resetValidation();
-});
+};
+
+addTodoForm.addEventListener("submit", handleAddTodoFormSubmit);
+
+// addTodoForm.addEventListener("submit", (evt) => {
+//   evt.preventDefault();
+//   const name = evt.target.name.value;
+//   const dateInput = evt.target.date.value;
+
+//   const date = new Date(dateInput);
+//   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+//   const id = uuidv4();
+
+//   const values = { name, date, id, completed: false };
+//   const todo = generateTodo(values);
+//   todosList.append(todo);
+
+//   closeModal(addTodoPopup);
+//   formValidator.resetValidation();
+// });
 
 initialTodos.forEach((item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
+  // const todo = generateTodo(item);
+  // todosList.append(todo);
+  renderTodo(item);
 });
 
 //instantiate - the new instance of the FormValidator class
